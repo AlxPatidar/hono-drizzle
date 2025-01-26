@@ -1,11 +1,11 @@
 import { Context } from 'hono'
 const handler = async (c: Context) => {
-	const { title } = await c.req.json()
+	const data = await c.req.json()
 	return c.json(
 		{
 			status: true,
 			message: 'All posts fetch sucessfully.',
-			data: title,
+			data,
 		},
 		200,
 	)
