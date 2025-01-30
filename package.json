@@ -2,7 +2,8 @@
 	"name": "hono-mysql",
 	"scripts": {
 		"dev": "bun run --hot src/index.ts",
-		"db:seed": "tsx src/db/seeds/index.ts"
+		"db:seed": "tsx src/db/seeds/index.ts",
+		"db:migrate": "drizzle-kit generate"
 	},
 	"dependencies": {
 		"@faker-js/faker": "^9.4.0",
