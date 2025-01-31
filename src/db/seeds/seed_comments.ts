@@ -38,7 +38,8 @@ export default async function seed(db: dbType) {
 		console.log('No post found, unable to generate comments')
 		return
 	}
-	const comments: any = generateComments(200, users, posts)
+	// create 300 comments on all posts
+	const comments: any = generateComments(300, users, posts)
 	await db.insert(commentTable).values(comments)
 	return true
 }

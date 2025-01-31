@@ -38,7 +38,7 @@ export const likeTable = mysqlTable(
 	},
 )
 
-export const likeTableRelations = relations(likeTable, ({ one, many }) => {
+export const likeTableRelations = relations(likeTable, ({ one }) => {
 	return {
 		user: one(userTable, {
 			fields: [likeTable.user_id],

@@ -40,11 +40,11 @@ export const userTable = mysqlTable(
 	},
 )
 // relation
-export const userTableRelations = relations(userTable, ({ one, many }) => {
+export const userTableRelations = relations(userTable, ({ many }) => {
 	return {
 		comments: many(commentTable),
 		likes: many(likeTable),
-		posts: one(postTable),
+		posts: many(postTable),
 	}
 })
 

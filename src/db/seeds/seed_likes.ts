@@ -15,7 +15,7 @@ type Like = {
 // Function to generate fake user data
 function generateComments(count: number, users: Ids[], posts: Ids[]) {
 	const likes: Like[] = []
-	for (let i = 0; i < count; i++) {
+	while (likes.length < count) {
 		const randomUser = users[Math.floor(Math.random() * users.length)]
 		const randomPost = posts[Math.floor(Math.random() * posts.length)]
 		// check user already like the post
