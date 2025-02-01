@@ -4,9 +4,9 @@ import { postTable } from '../../../db/schema'
 import db from '../../../db'
 
 const handler = async (c: Context) => {
-	const id = c.req.param('id')
+	const id: number = parseInt(c.req.param('id'))
 	const post = await db.select().from(postTable).where(eq(postTable.id, id))
-	if (!post) {
+	if (!post.length) {
 		return c.json(
 			{
 				status: false,
@@ -15,7 +15,7 @@ const handler = async (c: Context) => {
 			200,
 		)
 	}
-	const { title, content, user_id } = c.req.valid('json')
+	const { title, content, user_id } = await c.req.json()
 	const updatedPost = await db
 		.update(postTable)
 		.set({

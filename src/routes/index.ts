@@ -1,5 +1,6 @@
 import { Hono } from 'hono'
 import postRoutes from './posts/index'
+import commentRoutes from './comments/index'
 
 export const routes = (app: Hono) => {
 	// set base route
@@ -8,5 +9,6 @@ export const routes = (app: Hono) => {
 	})
 	// setup post router
 	app.route('/', postRoutes)
+	app.route('/', commentRoutes)
 	return app
 }

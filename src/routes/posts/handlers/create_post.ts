@@ -4,7 +4,7 @@ import { postTable } from '../../../db/schema'
 import db from '../../../db'
 
 const handler = async (c: Context) => {
-	const post = c.req.valid('json')
+	const post = await c.req.json()
 	// create post and return
 	const createdPost = await db.insert(postTable).values(post).$returningId()
 	// return created post
