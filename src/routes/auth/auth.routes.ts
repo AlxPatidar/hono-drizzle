@@ -50,3 +50,16 @@ export const verify = createRoute({
 		},
 	},
 })
+
+export const authRoutes = createRoute({
+	method: 'get',
+	path: '/auth/route',
+	request: {
+		headers: tokenSchema,
+	},
+	responses: {
+		200: {
+			description: 'Route with authentication',
+		},
+	},
+})

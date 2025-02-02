@@ -1,14 +1,14 @@
 import { Hono } from 'hono'
 import { logger } from 'hono/logger'
 import { routes } from './routes'
-import { jwt } from 'hono/jwt'
-let app = new Hono().basePath('/api')
+import { jwtMiddleware } from './utils/utils'
+
+let app = new Hono().basePath('api')
+
 // show request logs
 app.use(logger())
-
-// check authenticate with auth urls
-app.use('/auth/*', jwt({ secret: process.env.JWT_SECRET || '' }))
-
+// authenticate auth private routes
+app.use('/auth/*', jwtMiddleware())
 // create routes
 app = routes(app)
 
