@@ -1,5 +1,5 @@
 import { createRoute } from '@hono/zod-openapi'
-import { loginSchema, tokenSchema } from './validations'
+import { loginSchema, signupSchema, tokenSchema } from './validations'
 
 export const login = createRoute({
 	method: 'post',
@@ -15,11 +15,29 @@ export const login = createRoute({
 	},
 	responses: {
 		200: {
-			description: 'Create new posts',
+			description: 'User Login',
 		},
 	},
 })
 
+export const signup = createRoute({
+	method: 'post',
+	path: '/signup',
+	request: {
+		body: {
+			content: {
+				'application/json': {
+					schema: signupSchema,
+				},
+			},
+		},
+	},
+	responses: {
+		200: {
+			description: 'User Signup',
+		},
+	},
+})
 export const verify = createRoute({
 	method: 'get',
 	path: '/verify',

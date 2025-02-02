@@ -1,5 +1,5 @@
 import { Context } from 'hono'
-import bcrypt from 'bcryptjs'
+import { compareSync } from 'bcryptjs'
 import { sign } from 'hono/jwt'
 import db from '../../../db'
 import { userTable } from '../../../db/schema'
@@ -29,7 +29,7 @@ const handler = async (c: Context) => {
 		)
 	}
 	// check password is correct with bcrypt hash
-	const isValidPassword = bcrypt.compareSync(password, user[0].password)
+	const isValidPassword = compareSync(password, `${user[0].password}`)
 	if (!isValidPassword) {
 		return c.json(
 			{
